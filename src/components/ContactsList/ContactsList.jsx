@@ -1,4 +1,3 @@
-import { Component } from 'react';
 import { DeleteBtn, List } from './ContactsList.styled';
 import PropTypes from 'prop-types';
 
