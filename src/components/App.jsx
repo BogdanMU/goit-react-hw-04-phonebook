@@ -55,16 +55,14 @@ export class App extends Component {
     return (
       <Wrap>
         <h1>Phonebook</h1>
-        <ContactForm
-          updateConntactsList={this.updateConntactsList}
-        ></ContactForm>
+        <ContactForm updateConntactsList={this.updateConntactsList} />
         <h2>Contacts</h2>
-        <ContactsFilter inputHandler={this.onFormInput}></ContactsFilter>
+        <ContactsFilter inputHandler={this.onFormInput} />
         <ContactsList
           contacts={contacts}
           filter={filter}
           deleteFn={this.deleteContact}
-        ></ContactsList>
+        />
       </Wrap>
     );
   }
