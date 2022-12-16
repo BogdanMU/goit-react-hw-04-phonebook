@@ -13,15 +13,32 @@ const initialContacts = [
 
 export class App extends Component {
   state = {
-    contacts: [...initialContacts],
+    contacts: null,
     filter: '',
   };
+
+  LS = 'Stored Contacts';
+
+  componentDidMount() {
+    const restoredLocalData = JSON.parse(localStorage.getItem(this.LS));
+    this.setState({ contacts: restoredLocalData });
+  }
+
+  componentDidUpdate(_, prevState) {
+    if (prevState.contacts !== this.state.contacts) {
+      const contactsToStore = JSON.stringify(this.state.contacts);
+      localStorage.setItem(this.LS, contactsToStore);
+    }
+  }
 
   onFormInput = event => {
     this.setState({ [event.currentTarget.name]: event.currentTarget.value });
   };
 
   updateConntactsList = newContact => {
+    if (this.state.contacts === null) {
+      return this.setState({ contacts: [newContact] });
+    }
     if (
       this.state.contacts.filter(contact => {
         return contact.name
@@ -58,11 +75,15 @@ export class App extends Component {
         <ContactForm updateConntactsList={this.updateConntactsList} />
         <h2>Contacts</h2>
         <ContactsFilter inputHandler={this.onFormInput} />
-        <ContactsList
-          contacts={contacts}
-          filter={filter}
-          deleteFn={this.deleteContact}
-        />
+        {this.state.contacts !== null ? (
+          <ContactsList
+            contacts={contacts}
+            filter={filter}
+            deleteFn={this.deleteContact}
+          />
+        ) : (
+          <p>Add some friends!</p>
+        )}
       </Wrap>
     );
   }
