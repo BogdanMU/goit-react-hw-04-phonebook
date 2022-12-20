@@ -13,18 +13,6 @@ export const App = () => {
   });
   const [filter, setFilter] = useState('');
 
-  // componentDidMount() {
-  //   const restoredLocalData = JSON.parse(localStorage.getItem(this.LS));
-  //   this.setState({ contacts: restoredLocalData });
-  // }
-
-  // componentDidUpdate(_, prevState) {
-  //   if (prevState.contacts !== this.state.contacts) {
-  //     const contactsToStore = JSON.stringify(this.state.contacts);
-  //     localStorage.setItem(this.LS, contactsToStore);
-  //   }
-  // }
-
   useEffect(() => {
     const contactsToStore = JSON.stringify(contacts);
     localStorage.setItem(LS, contactsToStore);
