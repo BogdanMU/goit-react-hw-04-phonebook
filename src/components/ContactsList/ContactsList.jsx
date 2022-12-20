@@ -27,14 +27,14 @@ export const ContactsList = ({ contacts, filter, deleteFn }) => {
   );
 };
 
-ContactsList.propTypes = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-  deleteFn: PropTypes.func.isRequired,
-  filter: PropTypes.string.isRequired,
-};
+// ContactsList.propTypes = {
+//   contacts: PropTypes.arrayOf(
+//     PropTypes.shape({
+//       id: PropTypes.string.isRequired,
+//       name: PropTypes.string.isRequired,
+//       number: PropTypes.string.isRequired,
+//     })
+//   ).isRequired,
+//   deleteFn: PropTypes.func.isRequired,
+//   filter: PropTypes.string.isRequired,
+// };
